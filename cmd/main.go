@@ -19,7 +19,7 @@ func main() {
 	defer logger.Sync()
 
 	// Connect to db
-	db, err := redisdb.New("localhost:6379")
+	db, err := redisdb.New("redis:6379")
 	if err != nil {
 		logger.Fatal("error connecting to db")
 	}
