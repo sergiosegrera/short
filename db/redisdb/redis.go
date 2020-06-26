@@ -4,8 +4,8 @@ import (
 	"context"
 
 	"github.com/go-redis/redis/v8"
+	"github.com/sergiosegrera/short/config"
 	"github.com/sergiosegrera/short/db"
-
 	"github.com/sergiosegrera/short/models"
 )
 
@@ -13,11 +13,10 @@ type RedisDB struct {
 	client *redis.Client
 }
 
-// TODO: Full db options
-func New(addr string) (db.DB, error) {
+func New(conf *config.Config) (db.DB, error) {
 	client := redis.NewClient(&redis.Options{
-		Addr:     addr,
-		Password: "",
+		Addr:     conf.RedisAddress,
+		Password: conf.RedisPassword,
 		DB:       0,
 	})
 
